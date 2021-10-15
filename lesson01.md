@@ -36,9 +36,9 @@ DOMを使って値を参照し、別のDOMに値を書き込んでいますね�
 (lsn01_02.html)
 
 <html>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
 <div id="app">
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
 <p><input type="text" v-model="name" size="10" ></P>
 
@@ -58,4 +58,4 @@ var app=new Vue({
 </html>
 ```
 どうでしょうか？
-DOMの存在が消えてます。イベントを気にしなくてもいいのです。
+DOMの存在が消えてます。イベントを気にしなくてもいいのです。最初にVueを引っ張ってくるだけです。
