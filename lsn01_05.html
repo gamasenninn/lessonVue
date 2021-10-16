@@ -1,0 +1,25 @@
+<html>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app">
+
+<li v-for="item in items" >
+  {{item.hinmei}} {{item.suryo}} {{item.tanka}} {{item.suryo*item.tanka}}
+</li>
+
+</div>
+
+<script>
+var app=new Vue({
+  el: '#app',
+  data:{
+    items:[
+      {hinmei:'ラジオ',suryo:1, tanka:1000},
+      {hinmei:'電池',suryo:3, tanka:100},
+      {hinmei:'イヤホン',suryo:1, tanka:200},
+    ]
+  }
+})
+</script>
+
+</html>

@@ -6,7 +6,7 @@
 <p>数量:<input type="text" v-model="suryo" size="10" ></P>
 <p>単価:<input type="text" v-model="tanka" size="10" ></P>
 
-<p>金額:{{kingaku}}</p>
+<p>金額:{{suryo*tanka}}</p>
 
 </div>
 
@@ -17,11 +17,6 @@ var app=new Vue({
     suryo: 0,
     tanka: 0,
   },
-  computed: {
-    kingaku: function(){
-      return( this.suryo * this.tanka )
-    }
-  }
 })
 </script>
 
