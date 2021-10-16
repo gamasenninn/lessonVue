@@ -1,0 +1,34 @@
+<html>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app">
+
+<table border="1">
+<tr><th>商品名</th><th>数量</th><th>単価</th><th>金額</th></tr>
+<template v-for="item in items" >
+  <tr>
+    <td>{{item.hinmei}}</td>
+    <td>{{item.suryo}}</td>
+    <td>{{item.tanka}}</td>
+    <td>{{item.suryo*item.tanka}}</td>
+  </tr>
+</template>
+</table>
+
+</div>
+
+<script>
+var app=new Vue({
+  el: '#app',
+  data:{
+    items:[
+      {hinmei:'ラジオ',suryo:1, tanka:1000},
+      {hinmei:'電池',suryo:3, tanka:100},
+      {hinmei:'イヤホン',suryo:2, tanka:200},
+      {hinmei:'鉛筆',suryo:12, tanka:20},
+    ]
+  }
+})
+</script>
+
+</html>
