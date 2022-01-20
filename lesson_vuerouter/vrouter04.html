@@ -1,0 +1,54 @@
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+    <div id="app">
+        <h1>Hello App!</h1>
+
+        <div>
+          <router-link to="?page=list">Go to list</router-link>
+          <router-link to="?page=detail">Go to detail</router-link>  
+        </div>
+
+        ページ番号:{{pageIndex}}<br/>
+
+        <div v-if="pageIndex=='list'">
+          <h1>this is List block</h1>
+        </div>
+        <div v-if="pageIndex=='detail'">
+          <h1>this is detail block</h1>
+        </div>
+     
+        <router-view></router-view>
+      </div>
+
+
+
+    <script>
+        const dummy = { template: '<div>dummy</div>' }
+        const routes = [ 
+          { path: '/', component: dummy, name: 'dummy' },
+        ];
+        const router = new VueRouter({
+            routes
+        })
+
+        const app = new Vue({
+            el: "#app",
+            router,
+            computed: {
+              pageIndex(){
+                if (this.$route.query.page == undefined) return 'list'
+                return this.$route.query.page
+              }
+        }
+      });
+
+
+
+
+    </script>
+
+
+
+</html>

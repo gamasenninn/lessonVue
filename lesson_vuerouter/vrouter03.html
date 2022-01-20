@@ -1,0 +1,58 @@
+<!--  名前付Viewのサンプル-->
+
+<html>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+  <div id="app">
+
+    {{name}}
+    {{username}}
+
+    <template v-if="isList">
+      これは一覧です
+    </template>
+
+    <template v-if="isDetail">
+      ここは詳細です
+    </template>
+
+
+  </div>  
+  
+  <script>
+
+      const Foo = { template: '<div>foo</div>' }
+      const routes = [ {
+            path: '/',
+            component: Foo,
+            name: 'myPage'
+      }];
+      const router = new VueRouter({
+        routes
+       })
+      new Vue({
+        router
+      }).$mount('#app') 
+
+
+      const app = new Vue({
+        el: "#app",
+        data:{
+          isList: true,
+          isDetail: false,
+          name: 'aaaa',
+        },
+        computed: {
+          username(){
+            return rt.$route.params.username
+          }
+        }
+      });
+
+
+  </script>
+
+
+
+</html>

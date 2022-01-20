@@ -1,0 +1,92 @@
+<html>
+    <!-- Load required Bootstrap and BootstrapVue CSS -->
+
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@2.21.1/dist/bootstrap-vue.min.css" />
+
+    <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+
+    <!-- Load polyfills to support older browsers -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"
+        crossorigin="anonymous"></script>
+
+    <!-- Load Vue followed by BootstrapVue -->
+    <script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-vue@2.21.1/dist/bootstrap-vue.min.js"></script>
+
+    <!-- Load the following for BootstrapVueIcons support -->
+    <script src="https://unpkg.com/bootstrap-vue@2.21.1/dist/bootstrap-vue-icons.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+
+
+    <!-- Load the vue router  -->
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+    <div id="app">
+        <h1>Hello App!--- how to link by Bootstrap Vue</h1>
+
+        <!-- using router-link-->
+        <div>
+          <router-link to="?page=list">Go to list</router-link>
+          <router-link to="?page=detail">Go to detail</router-link>  
+        </div>
+
+        <!-- using bootstap Vue b-link...to -->
+        <div>
+          <b-link to="?page=list">Go to list</b-link>
+          <b-link to="?page=detail">Go to detail</b-link>  
+        </div>
+        <!-- using bootstap Vue button b-link...to -->
+        <div>
+          <b-button to="?page=list">Go to list</b-button>
+          <b-button to="?page=detail">Go to detail</b-button>  
+        </div>
+
+
+        ページ番号:{{pageIndex}}<br/>
+
+        <div v-if="pageIndex=='list'">
+          <h1>this is List block</h1>
+        </div>
+        <div v-if="pageIndex=='detail'">
+          <h1>this is detail block</h1>
+        </div>
+     
+        <router-view></router-view>
+      </div>
+
+
+
+    <script>
+        const dummy = { template: '<div>dummy</div>' }
+        const routes = [ 
+          { path: '/', component: dummy, name: 'dummy' },
+        ];
+        const router = new VueRouter({
+            routes
+        })
+
+        const app = new Vue({
+            el: "#app",
+            router,
+            computed: {
+              pageIndex(){
+                if (this.$route.query.page == undefined) return 'list'
+                return this.$route.query.page
+              }
+        }
+      });
+
+
+
+
+    </script>
+
+
+
+</html>
