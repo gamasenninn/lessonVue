@@ -111,3 +111,44 @@ Vue.component('sc-select-customer',{
         }
     }
 });
+
+
+Vue.component('sc-select-customer2',{
+    template: `
+    <div> 
+        <b-modal :id="id" > 
+            <p>顧客を選択してください</p>
+            <b-table hover striped small sort-by="ID" id="customer-table" :items="customers" @row-clicked="row"
+            label="Table Options" :fields="[
+                    {  key: 'id', label: 'No.' },
+                    {  key: 'kokyaku', label: '顧客名' },
+                    {  key: 'postNum',   label: '郵便番号' },
+                    {  key: 'address',  label: '住所' },
+                    {  key: 'telno',  label: '電話番号' },
+                    {  key: 'daihyou', label: '代表者名' },
+                    {  key: 'memo', label: 'メモ' },
+                ]"></b-table>
+        </b-modal>        
+    </div>
+    `,
+    props: [
+        'id'
+    ],
+    data(){
+        return {
+            customers: [
+                { id: 1, kokyaku: '○○株式会社', postNum: '000-0000', address: '栃木県鹿沼市板荷0000-00', telno: '000-0000-0000', daihyou: '代表者名', memo: 'これはお客さんのメモです' },
+                { id: 2, kokyaku: '○○有限会社', postNum: '000-0000', address: '栃木県鹿沼市板荷0000-00', telno: '000-0000-0000', daihyou: '代表者名', memo: 'これはお客さんのメモです' },
+                { id: 3, kokyaku: '○○商事', postNum: '000-0000', address: '栃木県鹿沼市板荷0000-00', telno: '000-0000-0000', daihyou: '代表者名', memo: 'これはお客さんのメモです' },
+                { id: 4, kokyaku: '○○鉄工所', postNum: '000-0000', address: '栃木県鹿沼市板荷0000-00', telno: '000-0000-0000', daihyou: '代表者名', memo: 'これはお客さんのメモです' },
+                ],    
+        }
+    },
+    methods: {
+        row(item){
+            this.$emit('selected',item);
+        }
+    }
+});
+
+

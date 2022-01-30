@@ -36,6 +36,9 @@
         <hello-world3 message="コンポ３"></hello-world3>
 ------------------------------------------------<br/>
         <sc-menu hide></sc-menu>
+------------------------------------------------<br/>
+        <b-form-input v-model="kokyaku" id="kokyaku" size="sm" v-b-modal.customer-modal></b-form-input>
+        <sc-select-customer2 v-on:selected="selectedCustomer" id="customer-modal"></sc-select-customer2>
 
     </div>
 
@@ -46,8 +49,15 @@
         var app = new Vue({
             el: '#app',
             data: {
-                
+                kokyaku: ''
             },
+            methods:{
+                selectedCustomer(item){
+                    this.kokyaku=item.kokyaku
+                    this.$bvModal.hide('customer-modal')
+                    
+                }
+            }
         })
 
     </script>
